@@ -1,0 +1,30 @@
+Fractales :
+
+0 Qu'est-ce qu'une fractale, qq exemples (2D et 3D)
+
+
+I À quoi ça sert
+
+Utilité
+Fractal analysis
+
+
+II Génération
+Donner les différentes méthodes, avec exemples et illustrations
+
+
+III Petits programmes JS pour générer fractales
+
+
+
+À faire :
+— Se renseigner sur les applications des fractales, surtout en :
+	- Computer and video game design
+	- Generation of new music
+	- Signal and image compression
+
+— Se renseigner sur méthodes de générations de fractales et essayer un algo JS pour en créer
+
+— Faire un Powerpoint
+
+— Écrire le texte et vérifier le temps
