@@ -86,7 +86,7 @@ function branches (long, rapp, angleBr, nbBr, n) {
 			crayon['isWriting'] = false;
 			turnAngle(180);
 			avancer(long * rapp);
-			turnAngle(angleBr);
+			turnAngle(180 + angleBr);
 		}
 	}
 	else {
