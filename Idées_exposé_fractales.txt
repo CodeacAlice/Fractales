@@ -23,8 +23,24 @@ III Petits programmes JS pour générer fractales
 	- Generation of new music
 	- Signal and image compression
 
-— Se renseigner sur méthodes de générations de fractales et essayer un algo JS pour en créer
+— Se renseigner sur méthodes de générations de fractales
 
 — Faire un Powerpoint
 
 — Écrire le texte et vérifier le temps
+
+
+Images : 
+Brocoli Planet in Winter : https://wall.alphacoders.com/big.php?i=834007
+Glass Complex : http://markjaybeefractal.com/glass-complex-triptych/
+Mountain & compression : http://sacredgeometryweb.com/fractal-image-compression/
+Intro : https://en.wikipedia.org/wiki/File:Mandel_zoom_11_satellite_double_spiral.jpg
+Spiral : http://digitalartofjax.com/so-whats-a-fractal/
+Fract in nature : http://www.technocrazed.com/incredible-examples-of-fractals-found-in-nature-photo-gallery
+Utilité : https://fractalfoundation.org
+Fractales connues : wikipédia
+why : https://www.flickr.com/photos/editor/6698208975/
+code : https://www.flickr.com/photos/hackny/6887025506
+
+
+

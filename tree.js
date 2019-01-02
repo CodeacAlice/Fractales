@@ -1,11 +1,5 @@
 var c = $("#myCanvas")[0];
 var ctx = c.getContext("2d");
-ctx.moveTo(0, 0);
-ctx.lineTo(200, 100);
-ctx.stroke(); 
-ctx.lineTo(0,50);
-ctx.lineTo(200,50);
-ctx.stroke();
 
 
 /* L'objet crayon permettra de tracer l'arbre
