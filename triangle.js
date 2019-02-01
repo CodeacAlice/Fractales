@@ -1,26 +1,12 @@
 var cT = document.getElementById("canvaTriangle");
 var ctxT = cT.getContext("2d");
 
-/* Création du triangle de base */
-/*var imgData = ctxT.createImageData(400, 400);
-
-var i;
-for (i = 0; i < imgData.data.length; i += 4) {
-	var x = (i%1600)/4;
-    var y = Math.trunc(i/1600);
-	if ((x <200 && y > -Math.sqrt(3)*x + 400) || (x >= 200 && y > Math.sqrt(3)*x - 400*(Math.sqrt(3)-1))) {
-  imgData.data[i+0] = 255;
-  imgData.data[i+1] = 0;
-  imgData.data[i+2] = 0;
-  imgData.data[i+3] = 255;
-}
-  
-}
-
-ctxT.putImageData(imgData, 150, -53);*/
 
 
 /* Le crayon */
+/* L'objet crayon permettra de tracer le triangle
+Ses paramètres sont : les coordonnées de sa position, la direction dans laquelle il se dirige,
+                      et s'il est en train d'écrire ou non */
 let crayonT = {posX: 0.0, posY: 0.0, angle: 0.0, isWriting: true};
 
 /* Fonctions permettant de changer la direction du crayon et de le faire avancer */

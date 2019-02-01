@@ -1,14 +1,22 @@
 var cS = $("#canvaSnowflake")[0];
 var ctxS = cS.getContext("2d");
 
-/* Le crayon */
-let crayonS = {posX: 0.0, posY: 0.0, angle: 0.0, isWriting: true};
+/* L'objet crayon */
+/* Ses paramètres sont : ses coordonnées, sa direction, et s'il écrit ou non*/
+let crayonS = {
+	posX: 0.0,
+	posY: 0.0,
+	angle: 0.0,
+	isWriting: true
+};
 
 /* Fonctions permettant de changer la direction du crayon et de le faire avancer */
+function convertToRadian (degre) {
+	return degre * Math.PI / 180.0;
+}
 function turnAngleS (newAngle) {
 	crayonS['angle'] += convertToRadian(newAngle);
 }
-
 
 function avancerS(distance) {
 	var dx = distance * Math.cos(crayonS['angle']);
@@ -76,19 +84,6 @@ function KochCurve (long, nbIt) {
 	}
 }
 
-function snowFlake (long, nbIt) {
-	videEcranS();
-
-	KochCurve(long, nbIt);
-
-	turnAngleS(- 120);
-	KochCurve(long, nbIt);
-
-	turnAngleS(- 120);
-	KochCurve(long, nbIt);
-}
-
-//snowFlake(100, 4)
 
 /* Créer un flocon avec le HTML */
 function newSnowflake() {
@@ -96,5 +91,15 @@ function newSnowflake() {
 	var newIt = parseInt($('#inputItSF')[0].value, 10);
 
 	if (newLength > 0 && newIt > 0)
-		{snowFlake(newLength, newIt)}
+		{
+			videEcranS();
+
+			KochCurve(newLength, newIt);
+
+			turnAngleS(- 120);
+			KochCurve(newLength, newIt);
+
+			turnAngleS(- 120);
+			KochCurve(newLength, newIt);
+		}
 }

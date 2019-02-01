@@ -28,6 +28,16 @@
     <body style="text-align: center; padding-bottom: 20px;">
 
         <h1>Les fractales avec JavaScript</h1>
+        <h2>Flocon de Koch</h2>
+        Longueur d'un segment : <input id="inputLengthSF" type="text" name="lenghtSF" value="100">
+        <br>
+        Nombre d'itérations : <input id="inputItSF" type="text" name="itSF" value="3">
+        <br>
+        <button type="button" onclick="newSnowflake()">Let it go</button>
+        <br>
+        <canvas id="canvaSnowflake" width="700" height="400" style="border:1px solid #000000;"></canvas> 
+
+        <br>
 
         <h2>Arbre fractal</h2>
 
@@ -44,16 +54,6 @@
         <button type="button" onclick="newTree()">Faire pousser l'arbre</button>
         <br>
         <canvas id="myCanvas" width="700" height="400" style="border:1px solid #000000;"></canvas>
-
-        <br>
-        <h2>Flocon de Koch</h2>
-        Longueur d'un segment : <input id="inputLengthSF" type="text" name="lenghtSF" value="100">
-        <br>
-        Nombre d'itérations : <input id="inputItSF" type="text" name="itSF" value="3">
-        <br>
-        <button type="button" onclick="newSnowflake()">C'est l'hiver</button>
-        <br>
-        <canvas id="canvaSnowflake" width="700" height="400" style="border:1px solid #000000;"></canvas> 
 
         <br>
         <h2>Triangle de Sierpinski</h2>
