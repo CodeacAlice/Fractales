@@ -41,13 +41,12 @@ function videEcranT() {
   ctxT.moveTo(crayonT['posX'], crayonT['posY']);
 }
 
-videEcranT();
-
 
 
 
 /* Fonction pour faire le triangle de Sierpinski */
 /* Pour éviter de le confondre avec un triangle simple, le triangle de Sierpinski sera par la suite appelé 'Triforce' */
+/* Les paramètres de la fonction sont : la longueur d'un côté de la Triforce et le nombre d'itérations */
 function triangle(long, it) {
   // S'il n'y a qu'une itération, on trace les trois triangles et on les colorie
   if (it == 1) {

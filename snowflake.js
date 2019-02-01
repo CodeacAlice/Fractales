@@ -14,7 +14,7 @@ let crayonS = {
 
 
 /* Les trois fonctions suivantes permettent de changer la direction du crayon et de le faire avancer */
-/* Fonction permettant de convertir un angle en degrés (utilisable par un humain) en radians (utilisables par la machine) */
+/* Fonction permettant de convertir un angle en degrés (utilisable par un humain) en radians (utilisable par la machine) */
 function convertToRadian (degre) {
 	return degre * Math.PI / 180.0;
 }
@@ -23,7 +23,8 @@ function turnAngleS (newAngle) {
 	crayonS['angle'] += convertToRadian(newAngle);
 }
 
-/* Fonction pour faire avancer le crayon selon une certaine distance */
+/* Fonction pour faire avancer le crayon */
+/* Son paramètre est une longueur selon laquelle on veut faire avancer le crayon */
 function avancerS(distance) {
 	// Pour tracer une ligne, il faut impérativement les coordonnées du point d'arrivée
 	// On commence donc par les calculer et modifier les valeurs posXet posY du crayon
@@ -41,8 +42,9 @@ function avancerS(distance) {
 }
 
 
-/* On veut ensuite une fonction pour effacer le canva si on veut faire différents flocons */
-/* Fixons d'abord le point de départ du crayon, de façon à ce que le flocon soit centré (avec un côté de longueur 100) */
+/* On veut ensuite une fonction qui permette d'effacer le canva si on veut faire d'autres flocons */
+/* Fixons d'abord le point de départ du crayon */
+// Position initiale : de façon à ce que le flocon soit centré, avec un côté de longueur 100
 let originSX = Math.round((cS.width -300) / 2);
 let originSY = Math.round((cS.height - 2*Math.sqrt(3)*100) / 2 + Math.sqrt(3)*100/2);
 
@@ -61,8 +63,6 @@ function videEcranS() {
 
 	ctxS.moveTo(crayonS['posX'], crayonS['posY']);
 }
-
-videEcranS();
 
 
 
@@ -107,16 +107,14 @@ function newSnowflake() {
 	var newIt = parseInt($('#inputItSF')[0].value, 10); // On récupère le nombre d'itérations
 	// Notons que les valeurs récupérées sont de type string, il faut donc utiliser parseFloat et parseInt pour en faire des nombres
 
-	if (newLength > 0 && newIt > 0) // Vérifier que les valeurs entrées soient cohérentes avant de tracer le flocon
+	if (newLength > 0 && newIt > 0) // Vérifier que les valeurs entrées sont cohérentes avant de tracer le flocon
 		{
 			videEcranS(); // Effacer le dessin précédent avant de tracer
 
 			// Chaque courbe dessinée ne fait d'un tiers du flocon qu'on veut obtenir, on en trace donc trois en tournant entre chaque
 			KochCurve(newLength, newIt);
-
 			turnAngleS(- 120);
 			KochCurve(newLength, newIt);
-
 			turnAngleS(- 120);
 			KochCurve(newLength, newIt);
 		}
