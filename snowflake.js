@@ -1,7 +1,9 @@
+/* Tout d'abord, récuperer le canva sur lequel on va dessiner */
 var cS = $("#canvaSnowflake")[0];
 var ctxS = cS.getContext("2d");
 
-/* L'objet crayon */
+
+/* Ensuite, l'objet crayon */
 /* Ses paramètres sont : ses coordonnées, sa direction, et s'il écrit ou non*/
 let crayonS = {
 	posX: 0.0,
@@ -10,20 +12,27 @@ let crayonS = {
 	isWriting: true
 };
 
-/* Fonctions permettant de changer la direction du crayon et de le faire avancer */
+
+/* Les trois fonctions suivantes permettent de changer la direction du crayon et de le faire avancer */
+/* Fonction permettant de convertir un angle en degrés (utilisable par un humain) en radians (utilisables par la machine) */
 function convertToRadian (degre) {
 	return degre * Math.PI / 180.0;
 }
+/* Fonction pour tourner l'angle selon un certain degré */
 function turnAngleS (newAngle) {
 	crayonS['angle'] += convertToRadian(newAngle);
 }
 
+/* Fonction pour faire avancer le crayon selon une certaine distance */
 function avancerS(distance) {
+	// Pour tracer une ligne, il faut impérativement les coordonnées du point d'arrivée
+	// On commence donc par les calculer et modifier les valeurs posXet posY du crayon
 	var dx = distance * Math.cos(crayonS['angle']);
 	var dy = distance * Math.sin(crayonS['angle']);
 	crayonS['posX'] += dx;
 	crayonS['posY'] -= dy;
 
+	// On vérifie ensuite si le crayon doit écrire ou non, et on trace une ligne ou on le déplace en fonction
 	if (crayonS['isWriting']) {
 		ctxS.lineTo(Math.round(crayonS['posX']), Math.round(crayonS['posY']));
 		ctxS.stroke();
@@ -32,18 +41,18 @@ function avancerS(distance) {
 }
 
 
-/* Fonctions permettant d'effacer ce qu'il y a dans le canevas et de remettre le crayon à sa position initiale */
-/* Position initiale : de façon à ce que le flocon soit centré */
+/* On veut ensuite une fonction pour effacer le canva si on veut faire différents flocons */
+/* Fixons d'abord le point de départ du crayon, de façon à ce que le flocon soit centré (avec un côté de longueur 100) */
 let originSX = Math.round((cS.width -300) / 2);
 let originSY = Math.round((cS.height - 2*Math.sqrt(3)*100) / 2 + Math.sqrt(3)*100/2);
 
-/* Couleur du fond et couleur du tracé*/
+/* On choisit également la couleur du tracé */
 let couleurTraceS = "blue";
 
 /* Fonction permettant d'effacer ce qu'il y a dans le canevas et de remettre le crayon à sa position initiale */
 function videEcranS() {
-	ctxS.clearRect(0, 0, cS.width, cS.height);
-	ctxS.beginPath();
+	ctxS.clearRect(0, 0, cS.width, cS.height); // Créé un rectangle blanc faisant la taille du canva
+	ctxS.beginPath(); // Réinitialise le chemin (s'il n'est pas réinitialisé, les chemins des dessins précédents seront retracés aussi)
 	ctxS.strokeStyle = couleurTraceS;
 	crayonS['posX'] = originSX;
 	crayonS['posY'] = originSY;
@@ -56,8 +65,14 @@ function videEcranS() {
 videEcranS();
 
 
-/* SnowFlake */
+
+
+/* On va pouvoir tracer le flocon ! */
+
+/* On commence par la fonction pricipale : celle qui trace une courbe de Koch */
+/* C'est une fonction récursive dont les paramètres sont : la longueur d'un segment et le nombre d'itérations */
 function KochCurve (long, nbIt) {
+	// S'il n'y a qu'une itération, on trace les quatre segments en tournant entre chaque
 	if (nbIt == 1) {
 		avancerS(long);
 
@@ -70,8 +85,9 @@ function KochCurve (long, nbIt) {
 		turnAngleS(60);
 		avancerS(long);
 	}
+	// Sinon, on fait la même chose mais en traçant une courbe de Koch au lieu d'un segment
 	else {
-		KochCurve(long /3, nbIt-1);
+		KochCurve(long /3, nbIt-1); // Ne pas oublier de diminuer le nombre d'itérations, sinon on lance une boucle infinie
 
 		turnAngleS(60);
 		KochCurve(long /3, nbIt-1);
@@ -85,15 +101,17 @@ function KochCurve (long, nbIt) {
 }
 
 
-/* Créer un flocon avec le HTML */
+/* On va à présent créer la fonction qui trace le flocon à l'aide de la fonction précédente et des données entrées sur la page web */
 function newSnowflake() {
-	var newLength = parseFloat($('#inputLengthSF')[0].value);
-	var newIt = parseInt($('#inputItSF')[0].value, 10);
+	var newLength = parseFloat($('#inputLengthSF')[0].value); // On récupère la longueur donnée
+	var newIt = parseInt($('#inputItSF')[0].value, 10); // On récupère le nombre d'itérations
+	// Notons que les valeurs récupérées sont de type string, il faut donc utiliser parseFloat et parseInt pour en faire des nombres
 
-	if (newLength > 0 && newIt > 0)
+	if (newLength > 0 && newIt > 0) // Vérifier que les valeurs entrées soient cohérentes avant de tracer le flocon
 		{
-			videEcranS();
+			videEcranS(); // Effacer le dessin précédent avant de tracer
 
+			// Chaque courbe dessinée ne fait d'un tiers du flocon qu'on veut obtenir, on en trace donc trois en tournant entre chaque
 			KochCurve(newLength, newIt);
 
 			turnAngleS(- 120);
@@ -103,3 +121,5 @@ function newSnowflake() {
 			KochCurve(newLength, newIt);
 		}
 }
+
+/* Plus qu'à le lancer ! */

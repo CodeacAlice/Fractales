@@ -1,21 +1,14 @@
+/* Ici se trouve le code pour tracer l'arbre fractal */
+/* Le début étant similaire au code du flocon, je ne m'y attarderai pas ici */
 var c = $("#myCanvas")[0];
 var ctx = c.getContext("2d");
 
 
-/* L'objet crayon permettra de tracer l'arbre
-Ses paramètres sont : les coordonnées de sa position, la direction dans laquelle il se dirige,
-						et s'il est en train d'écrire ou non */
 let crayon = {posX: 0.0, posY: 0.0, angle: 0.0, isWriting: true};
 
-function convertToRadian (degre) {
-	return degre * Math.PI / 180.0;
-}
-
-/* Fonctions permettant de changer la direction du crayon et de le faire avancer */
 function turnAngle (newAngle) {
 	crayon['angle'] += convertToRadian(newAngle);
 }
-
 
 function avancer(distance) {
 	var dx = distance * Math.cos(crayon['angle']);
@@ -31,15 +24,12 @@ function avancer(distance) {
 }
 
 
-/* Fonctions permettant d'effacer ce qu'il y a dans le canevas et de remettre le crayon à sa position initiale */
-/* Position initiale : en bas au milieu */
+// Position initiale : au milieu en bas
 let originX = Math.round(c.width / 2);
 let originY = c.height;
 
-/* Couleur du fond et couleur du tracé*/
 let couleurTrace = "green";
 
-/* Fonction permettant d'effacer ce qu'il y a dans le canevas et de remettre le crayon à sa position initiale */
 function videEcran() {
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.beginPath();
@@ -56,34 +46,44 @@ videEcran();
 
 
 
-// On va pouvoir faire l'arbre !
-// D'abord, le tronc :
+/* Fonctions pour faire l'arbre */
+
+/* La première fonction sert à faire le tronc de l'arbre */
+/* Son unique paramètre est la longueur du tronc */
 function tronc(long) {
 	crayon['angle'] = convertToRadian(90.0);
 	crayon['isWriting'] = true;
 	avancer(long);
 }
 
-/* Ensuite, les branches */
-/* "long" est la longueur de la branche mère,
-	rapp est le rapport de longueur entre la branche mère et la branche fille
-	angleBr est l'angle est l'angle entre deux branches
-	nbBr est le nombre de branches filles poussant sur chanque branche mère
-	n est le nombre d'itérations*/
+/* La fonction suivante sert à tracer les branches */
+/* Ses paramètres sont :
+	la longueur de la branche mère "long"
+	le rapport de longueur entre la branche mère et la branche fille "rapp"
+	l'angle entre deux branches "angleBr"
+	le nombre de branches filles poussant sur chaque branche mère "nbBr"
+	le nombre d'itérations "n" */
 function branches (long, rapp, angleBr, nbBr, n) {
+	// S'il n'y a qu'une itération, on se contente de tracer les branches filles
 	if (n == 1) {
+		// On commence par se tourner dans la direction de la première branche fille
 		turnAngle (- angleBr * (nbBr-1) /2);
+		// On fait une boucle for afin que la fonction s'adapte au nombre de branches filles donné
 		for (var k = 1; k <= nbBr; k++) {
+			// On trace la branche
 			crayon['isWriting'] = true;
 			avancer(long * rapp);
 
+			// On fait demi-tour, on retourne au point de départ, et on se tourne en direction de la branche suivante
 			crayon['isWriting'] = false;
 			turnAngle(180);
 			avancer(long * rapp);
 			turnAngle(180 + angleBr);
 		}
 	}
+	// S'il y a plusieurs itérations, il faudra rappeler la fonction afin de tracer des branches filles après avoir tracé chaque branche
 	else {
+		// Afin de pouvoir retourner au point de départ après avoir rappelé la fonction, on garde en mémoire les coordonées de ce point de départ
 		var x = crayon['posX'];
 		var y = crayon['posY'];
 
@@ -110,7 +110,7 @@ function fractalTree (long, rapp, angle, nbBr, nbIt) {
 	tronc(long);
 	branches(long, rapp, angle, nbBr, nbIt);
 }
-// Tester fractalTree(200, 0.5, 120, 3, 7)
+
 
 
 
@@ -125,3 +125,4 @@ function newTree () {
 	if (newLength > 0 && newRatio > 0 && newAngle > 0 && newNb > 0 && newIt > 0)
 		{fractalTree(newLength, newRatio, newAngle, newNb, newIt)}
 }
+// Notez qu'avec un rapport de 0.5, un angle de 120 et 3 branches filles, vous aurez un triangle de Sierpinski
