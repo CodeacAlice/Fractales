@@ -5,7 +5,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+
         <title>Fractales</title>
     </head>
 
@@ -15,7 +15,7 @@
         <h2>Flocon de Koch</h2>
         <p>Longueur d'un segment : <input id="inputLengthSF" type="text" name="lenghtSF" value="100"></p>
         <p>Nombre d'itérations : <input id="inputItSF" type="text" name="itSF" value="3"></p>
-        <p><button type="button" onclick="newSnowflake()">Let it go</button></p>
+        <p><button type="button" onclick="newSnowflake()">Tracer le flocon</button></p>
         <canvas id="canvaSnowflake" width="700" height="400" style="border:1px solid #000000;"></canvas> 
 
         <br>
@@ -34,7 +34,7 @@
         <h2>Triangle de Sierpinski</h2>
         <p>Longueur du triangle : <input id="inputLengthTri" type="text" name="lenghtTri" value="200"></p>
         <p>Nombre d'itérations : <input id="inputItTri" type="text" name="itTri" value="1"></p>
-        <p><button type="button" onclick="UltimateTriforce()">Éveille le pouvoir du héros élu des déesses</button></p>
+        <p><button type="button" onclick="newTriangle()">Dessiner le triangle</button></p>
         <canvas id="canvaTriangle" width="700" height="400" style="border:1px solid #000000;"></canvas>
 
 
@@ -45,7 +45,7 @@
         <script type="text/javascript">
             newSnowflake();
             newTree();
-            UltimateTriforce();
+            newTriangle();
         </script>
     </body>
 

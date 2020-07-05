@@ -114,7 +114,7 @@ function triangle(long, it) {
 }
 
 /* Enfin, la fonction appelée sur la page HTML */
-function UltimateTriforce() {
+function newTriangle() {
   // On récupère la longueur et le nombre d'itérations
   var newLength = parseFloat(document.getElementById('inputLengthTri').value);
   var newIt = parseInt(document.getElementById('inputItTri').value, 10);
