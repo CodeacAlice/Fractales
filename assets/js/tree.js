@@ -1,7 +1,7 @@
 /* Ici se trouve le code pour tracer l'arbre fractal */
 
 /* Le début étant similaire au code du flocon, je ne m'y attarderai pas ici */
-var c = $("#myCanvas")[0];
+var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
 
@@ -106,11 +106,11 @@ function branches (long, rapp, angleBr, nbBr, n) {
 /* On combine à présent les fonctioncs précédentes dans une fonction qui va récupérer les paramètres sur la page HTML  */
 function newTree () {
 	// On récupère les paramètres
-	var newLength = parseFloat($('#inputLengthTree')[0].value);
-	var newRatio = parseFloat($('#inputRatioTree')[0].value);
-	var newAngle = parseFloat($('#inputAngleTree')[0].value);
-	var newNb = parseInt($('#inputNbTree')[0].value, 10);
-	var newIt = parseInt($('#inputItTree')[0].value, 10);
+	var newLength = parseFloat(document.getElementById('inputLengthTree').value);
+	var newRatio = parseFloat(document.getElementById('inputRatioTree').value);
+	var newAngle = parseFloat(document.getElementById('inputAngleTree').value);
+	var newNb = parseInt(document.getElementById('inputNbTree').value, 10);
+	var newIt = parseInt(document.getElementById('inputItTree').value, 10);
 
 	if (newLength > 0 && newRatio > 0 && newAngle > 0 && newNb > 0 && newIt > 0) // On vérifie que les paramètres donnés sont corrects
 		{

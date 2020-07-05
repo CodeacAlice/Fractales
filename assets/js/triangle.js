@@ -116,8 +116,8 @@ function triangle(long, it) {
 /* Enfin, la fonction appelée sur la page HTML */
 function UltimateTriforce() {
   // On récupère la longueur et le nombre d'itérations
-  var newLength = parseFloat($('#inputLengthTri')[0].value);
-  var newIt = parseInt($('#inputItTri')[0].value, 10);
+  var newLength = parseFloat(document.getElementById('inputLengthTri').value);
+  var newIt = parseInt(document.getElementById('inputItTri').value, 10);
 
   // On vérifie que les valeurs données sont correctes, et si c'est la cas on efface le dessin précédent et on fait le tracé
   if (newLength > 0 && newIt > 0) {

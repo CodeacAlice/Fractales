@@ -1,5 +1,5 @@
 /* Tout d'abord, récuperer le canva sur lequel on va dessiner */
-var cS = $("#canvaSnowflake")[0];
+var cS = document.getElementById("canvaSnowflake");
 var ctxS = cS.getContext("2d");
 
 
@@ -103,8 +103,8 @@ function KochCurve (long, nbIt) {
 
 /* On va à présent créer la fonction qui trace le flocon à l'aide de la fonction précédente et des données entrées sur la page web */
 function newSnowflake() {
-	var newLength = parseFloat($('#inputLengthSF')[0].value); // On récupère la longueur donnée
-	var newIt = parseInt($('#inputItSF')[0].value, 10); // On récupère le nombre d'itérations
+	var newLength = parseFloat(document.getElementById('inputLengthSF').value); // On récupère la longueur donnée
+	var newIt = parseInt(document.getElementById('inputItSF').value, 10); // On récupère le nombre d'itérations
 	// Notons que les valeurs récupérées sont de type string, il faut donc utiliser parseFloat et parseInt pour en faire des nombres
 
 	if (newLength > 0 && newIt > 0) // Vérifier que les valeurs entrées sont cohérentes avant de tracer le flocon
