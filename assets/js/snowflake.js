@@ -112,7 +112,7 @@ function newSnowflake() {
 			videEcranS(); // Effacer le dessin précédent avant de tracer
 
 			// Chaque courbe dessinée ne fait d'un tiers du flocon qu'on veut obtenir, on en trace donc trois en tournant entre chaque
-			KochCurve(newLength, newIt);
+			KochCurve(newLength, newIt);console.log(crayonS.posX, crayonS.posY);
 			turnAngleS(- 120);
 			KochCurve(newLength, newIt);
 			turnAngleS(- 120);

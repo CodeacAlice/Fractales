@@ -16,7 +16,7 @@ class Crayon {
         this.x = x; this.y = y;
         var ctx = document.getElementById(this.idcan).getContext("2d");
         ctx.lineTo(x,y);
-        ctxS.stroke();
+        ctx.stroke();
     }
 
     turn(degre) {
@@ -42,5 +42,11 @@ class Crayon {
         ctx.strokeStyle = this.color;
         this.moveTo(orX, orY);
         this.angle = 0;
+    }
+
+    changeColor(color) {
+        this.color = color;
+        var ctx = document.getElementById(this.idcan).getContext("2d");
+        ctx.strokeStyle = this.color;
     }
 }
