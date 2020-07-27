@@ -1,6 +1,6 @@
 let cS = document.getElementById("canvaSnowflake");
 
-let crayonS = new Crayon (0,0,0, 'canvaSnowflake', 'orange');
+let crayonS = new Crayon (0,0,0, 'canvaSnowflake', 'blue');
 
 
 
@@ -18,26 +18,26 @@ function KochCurve (long, nbIt) {
 	if (nbIt == 1) {
 		crayonS.traceLine(long);
 
-		crayonS.turn(60);
+		crayonS.turn(-60);
 		crayonS.traceLine(long);
 
-		crayonS.turn(- 120);
+		crayonS.turn(120);
 		crayonS.traceLine(long);
 
-		crayonS.turn(60);
+		crayonS.turn(-60);
 		crayonS.traceLine(long);
 	}
 	// Sinon, on fait la même chose mais en traçant une courbe de Koch au lieu d'un segment
 	else {
 		KochCurve(long /3, nbIt-1); // Ne pas oublier de diminuer le nombre d'itérations, sinon on lance une boucle infinie
 
-		crayonS.turn(60);
+		crayonS.turn(-60);
 		KochCurve(long /3, nbIt-1);
 
-		crayonS.turn(- 120);
+		crayonS.turn( 120);
 		KochCurve(long /3, nbIt-1);
 
-		crayonS.turn(60);
+		crayonS.turn(-60);
 		KochCurve(long /3, nbIt-1);
 	}
 }
@@ -52,14 +52,13 @@ function newSnowflake() {
 	if (newLength > 0 && newIt > 0) // Vérifier que les valeurs entrées sont cohérentes avant de tracer le flocon
 		{
             crayonS.reinit(originSX, originSY); // Effacer le dessin précédent avant de tracer
-            console.log(crayonS.x, crayonS.y);
 
 			// Chaque courbe dessinée ne fait d'un tiers du flocon qu'on veut obtenir, on en trace donc trois en tournant entre chaque
-			KochCurve(newLength, newIt);console.log(crayonS.x, crayonS.y);
-			/* crayonS.turn(-120); crayonS.changeColor('red');
 			KochCurve(newLength, newIt);
-			crayonS.turn(-120); crayonS.changeColor('blue');
-			KochCurve(newLength, newIt); */
+			crayonS.turn(120); 
+			KochCurve(newLength, newIt);
+			crayonS.turn(120); 
+			KochCurve(newLength, newIt);
 		}
 }
 

@@ -43,10 +43,4 @@ class Crayon {
         this.moveTo(orX, orY);
         this.angle = 0;
     }
-
-    changeColor(color) {
-        this.color = color;
-        var ctx = document.getElementById(this.idcan).getContext("2d");
-        ctx.strokeStyle = this.color;
-    }
 }
