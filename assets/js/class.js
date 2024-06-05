@@ -1,16 +1,28 @@
 
+// On créé une classe "Crayon" qui représente le crayon avec lequel on va dessiner nos fractales
+// Ses attributs sont :
+    // Les coordonnées (x,y) de sa position, 
+    // La direction (angle) dans laquelle il est tourné, 
+    // L'identifiant du canvas sur lequel on va dessiner
+    // La couleur du trait
+    // L'élément sur lequel on dessine (ctx)
+
 class Crayon {
+    x = 0;
+    y = 0;
+    angle = 0;
+    idCanvas;
+    ctx;
+
+
     /**
-     * @param {string} idCanvas 
-     * @param {string} color 
+     * @param {string} idCanvas L'identifiant du canvas sur lequel on va dessiner
+     * @param {object} parametresDeDemarrage Objet contenant les données d'initialisation : coordonnées (x,y) de départ, angle de départ, couleur de tracé
      */
-    constructor (idCanvas, color) {
-        this.x = 0;
-        this.y = 0;
-        this.angle = 0;
+    constructor (idCanvas, parametresDeDemarrage) {
         this.idCanvas = idCanvas;
-        this.color = color;
-        this.ctx = document.getElementById(this.idCanvas).getContext("2d");
+        this.ctx = document.getElementById(idCanvas).getContext("2d");
+        this.reinitialiseLeCanvas(parametresDeDemarrage);
     }
 
     /**
@@ -35,20 +47,20 @@ class Crayon {
     }
 
     /**
-     * Tourne le crayon
-     * @param {number} degre 
+     * Tourne le crayon selon l'angle donné (en degrés)
+     * @param {number} angleDeRotation 
      */
-    tourne(degre) {
-        this.angle += degre * Math.PI / 180.0;
+    tourne(angleDeRotation) {
+        this.angle += angleDeRotation * Math.PI / 180.0;
     }
 
     /**
      * Déplace le crayon dans la direction dans laquelle il est tourné
-     * @param {number} distance Distance que parcourt le crayon
+     * @param {number} longueur Distance que parcourt le crayon
      */
-    deplaceEnLigne(distance) {
-        let x1 = this.x + distance * Math.cos(this.angle),
-            y1 = this.y + distance * Math.sin(this.angle);
+    deplaceEnLigne(longueur) {
+        let x1 = this.x + longueur * Math.cos(this.angle),
+            y1 = this.y + longueur * Math.sin(this.angle);
         this.deplaceAuPoint(x1,y1);
     }
     /**
@@ -62,15 +74,16 @@ class Crayon {
     }
 
     /**
-     * Réinitialise le canvas
-     * @param {number} origineX 
-     * @param {number} origineY 
+     * Réinitialise le canvas, place le crayon au point de coordonnées (origineX, origineY)
+     * @param {object} parametresDeDemarrage 
      */
-    reinitialiseLeCanvas(origineX, origineY) {
-        this.ctx.clearRect(0, 0, c.width, c.height); 
+    reinitialiseLeCanvas(parametresDeDemarrage) {
+        let canvas = document.getElementById(this.idCanvas);
+        console.log(canvas);
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height); 
         this.ctx.beginPath(); 
-        this.ctx.strokeStyle = this.color;
-        this.deplaceAuPoint(origineX, origineY);
-        this.angle = 0;
+        this.ctx.strokeStyle = parametresDeDemarrage.couleur;
+        this.deplaceAuPoint(parametresDeDemarrage.x, parametresDeDemarrage.y);
+        this.angle = parametresDeDemarrage.angle;
     }
 }
