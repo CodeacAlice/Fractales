@@ -2,10 +2,8 @@
 <html lang="fr">
 
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <title>Fractales</title>
     </head>
 
@@ -13,21 +11,43 @@
 
         <h1>Les fractales avec JavaScript</h1>
         <h2>Flocon de Koch</h2>
-        <p>Nombre d'itérations : <input id="inputNombreDiterationsFlocon" type="number" name="itSF" value="3"></p>
-        <p><button type="button" onclick="tracerLeFloconDeKoch()">Tracer le flocon</button></p>
+        <p>
+            <label for="inputNombreDiterationsFlocon">Nombre d'itérations</label> :
+            <input id="inputNombreDiterationsFlocon" type="number" name="nombreDiterationsFlocon" value="3">
+        </p>
+        <p>
+            <button type="button" onclick="tracerLeFloconDeKoch()">Tracer le flocon</button>
+        </p>
         <canvas id="canvasFlocon" width="700" height="400" style="border:1px solid #000000;"></canvas> 
 
         <br>
 
         <h2>Arbre fractal</h2>
 
-        <p>Longueur du tronc : <input id="inputLengthTree" type="text" name="lenghtTree" value="100"></p>
-        <p>Rapport de longueur entre une branche mère et une branche fille : <input id="inputRatioTree" type="text" name="ratioTree" value="0.7"></p>
-        <p>Angle entre deux branches : <input id="inputAngleTree" type="text" name="angleTree" value="30"></p>
-        <p>Nombre de branches filles : <input id="inputNbTree" type="text" name="nbTree" value="3"></p>
-        <p>Nombre d'itérations : <input id="inputItTree" type="text" name="itTree" value="4"></p>
-        <p><button type="button" onclick="newTree()">Faire pousser l'arbre</button></p>
-        <canvas id="myCanvas" width="700" height="400" style="border:1px solid #000000;"></canvas>
+        <p>
+            <label for="inputLongueurArbre">Longueur du tronc</label> :
+            <input id="inputLongueurArbre" type="number" name="longueurArbre" value="100">
+        </p>
+        <p>
+            <label for="inputRatioArbre">Rapport de longueur entre une branche mère et une branche fille</label> :
+            <input id="inputRatioArbre" type="number" name="ratioArbre" value="0.7">
+        </p>
+        <p>
+            <label for="inputAngleArbre">Angle entre deux branches</label> :
+            <input id="inputAngleArbre" type="number" name="angleArbre" value="30">
+        </p>
+        <p>
+            <label for="inputNombreBranchesArbre">Nombre de branches filles</label> :
+            <input id="inputNombreBranchesArbre" type="number" name="nombreBranchesArbre" value="3">
+        </p>
+        <p>
+            <label for="inputNombreDIterationsArbre">Nombre d'itérations</label> :
+            <input id="inputNombreDIterationsArbre" type="number" name="nombreDIterationsArbre" value="4">
+        </p>
+        <p>
+            <button type="button" onclick="tracerLArbre()">Faire pousser l'arbre</button>
+        </p>
+        <canvas id="canvasArbre" width="700" height="400" style="border:1px solid #000000;"></canvas>
 
         <br>
         <h2>Triangle de Sierpinski</h2>
@@ -49,7 +69,7 @@
             }
 
             tracerLeFloconDeKoch();
-            newTree();
+            tracerLArbre();
             newTriangle();
         </script>
     </body>

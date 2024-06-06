@@ -2,20 +2,22 @@
 // On définit nos variables principales
 
 const idCanvasFlocon = "canvasFlocon"; 
-const couleurFlocon = "blue";
-const longueurSegmentFlocon = 100; // ici la taille du flocon est fixe
-
 const canvasFlocon = document.getElementById(idCanvasFlocon);
+
 const inputNombreDiterationsFlocon = document.getElementById('inputNombreDiterationsFlocon');
 
 // On calcule la position initiale de façon à ce que le flocon soit centré
-const origineFloconX = Math.round(canvasFlocon.width/2 - longueurSegmentFlocon*(3/2));
-const origineFloconY = Math.round(canvasFlocon.height/2 - longueurSegmentFlocon * Math.sqrt(3)/2)
+const longueurSegmentFlocon = 100; // ici la taille du flocon est fixe
+
+const origineXFlocon = Math.round(canvasFlocon.width/2 - longueurSegmentFlocon*(3/2));
+const origineYFlocon = Math.round(canvasFlocon.height/2 - longueurSegmentFlocon * Math.sqrt(3)/2)
+const origineAngleFlocon = 0;
+const couleurFlocon = "blue";
 
 const parametresDeDemarrageFlocon = {
-	x: origineFloconX, 
-	y: origineFloconY, 
-	angle: 0, 
+	x: origineXFlocon, 
+	y: origineYFlocon, 
+	angle: origineAngleFlocon, 
 	couleur: couleurFlocon
 };
 const crayonFlocon = new Crayon (idCanvasFlocon, parametresDeDemarrageFlocon);

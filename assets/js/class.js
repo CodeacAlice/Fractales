@@ -51,7 +51,11 @@ class Crayon {
      * @param {number} angleDeRotation 
      */
     tourne(angleDeRotation) {
-        this.angle += angleDeRotation * Math.PI / 180.0;
+        this.angle += this.degresVersRadians(angleDeRotation);
+    }
+
+    degresVersRadians(angleEnDegres) {
+        return Math.PI * angleEnDegres / 180.0;
     }
 
     /**
@@ -79,11 +83,10 @@ class Crayon {
      */
     reinitialiseLeCanvas(parametresDeDemarrage) {
         let canvas = document.getElementById(this.idCanvas);
-        console.log(canvas);
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); 
         this.ctx.beginPath(); 
         this.ctx.strokeStyle = parametresDeDemarrage.couleur;
         this.deplaceAuPoint(parametresDeDemarrage.x, parametresDeDemarrage.y);
-        this.angle = parametresDeDemarrage.angle;
+        this.angle = this.degresVersRadians(parametresDeDemarrage.angle);
     }
 }
