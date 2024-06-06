@@ -11,12 +11,13 @@ const inputAngleArbre = document.getElementById('inputAngleArbre');
 const inputNombreBranchesArbre = document.getElementById('inputNombreBranchesArbre');
 const inputNombreDIterationsArbre = document.getElementById('inputNombreDIterationsArbre');
 
-// On calcule la position initiale de façon à ce que le Arbre soit centré
+// On calcule la position initiale de façon à ce que l'arbre soit au milieu en bas
 const origineXArbre = Math.round(canvasArbre.width/2);
 const origineYArbre = canvasArbre.height;
 const origineAngleArbre = - 90;
 const couleurArbre = "green";
 
+// On créé notre objet Crayon
 const parametresDeDemarrageArbre = {
 	x: origineXArbre, 
 	y: origineYArbre,
@@ -31,20 +32,13 @@ const crayonArbre = new Crayon (idCanvasArbre, parametresDeDemarrageArbre);
 /* Fonctions pour faire l'arbre */
 
 
-/* La fonction suivante sert à tracer les branches */
-/* Ses paramètres sont :
-	la longueur de la branche mère
-	le rapport de longueur entre la branche mère et la branche fille
-	l'angle entre deux branches
-	le nombre de branches filles poussant sur chaque branche mère
-	le nombre d'itérations */
 /**
- * 
- * @param {number} longueur 
- * @param {number} ratio 
- * @param {number} angle 
- * @param {number} nombreBranches 
- * @param {number} nombreDIterations 
+ * Trace les branches de l'arbre
+ * @param {number} longueur Longueur des branches à tracer
+ * @param {number} ratio (longueur d'une branche fille) / (longueur de sa branche mère)
+ * @param {number} angle Angle entre deux branches adjacentes (en degrés)
+ * @param {number} nombreBranches Le nombre de branches filles sur une même branche mère
+ * @param {number} nombreDIterations Le nombre d'itérations 
  */
 function branches (longueur, ratio, angle, nombreBranches, nombreDIterations) {
 	// S'il n'y a qu'une itération, on se contente de tracer les branches filles
@@ -56,9 +50,9 @@ function branches (longueur, ratio, angle, nombreBranches, nombreDIterations) {
 			// On trace la branche
 			crayonArbre.traceEnLigne(longueur);
 			// On fait demi-tour, on retourne au point de départ, et on se tourne en direction de la branche suivante
-			crayonArbre.tourne(180.0); 
+			crayonArbre.tourne(180); 
 			crayonArbre.deplaceEnLigne(longueur); 
-			crayonArbre.tourne(180.0 + angle); 
+			crayonArbre.tourne(180 + angle); 
 		}
 	}
 	// S'il y a plusieurs itérations, il faudra rappeler la fonction afin de tracer des branches filles après avoir tracé chaque branche mère
@@ -75,7 +69,7 @@ function branches (longueur, ratio, angle, nombreBranches, nombreDIterations) {
 			crayonArbre.angle = a;
 			crayonArbre.tourne(180);
 			crayonArbre.deplaceEnLigne(longueur);
-			crayonArbre.tourne(angle + 180);
+			crayonArbre.tourne(180 + angle);
 		}
 	}
 }
@@ -83,6 +77,9 @@ function branches (longueur, ratio, angle, nombreBranches, nombreDIterations) {
 
 
 /* On combine à présent les fonctioncs précédentes dans une fonction qui va récupérer les paramètres sur la page HTML  */
+/**
+ * Trace l'arbre à l'aide de la fonction branches et des données entrées par l'utilisateur·rice
+ */
 function tracerLArbre () {
 	// On récupère les paramètres
 	let longueurArbre = parseFloat(inputLongueurArbre.value);
@@ -93,8 +90,8 @@ function tracerLArbre () {
 
 	if (longueurArbre > 0 && ratioArbre > 0 && angleArbre > 0 && nombreBranchesArbre > 0 && nombreDIterationsArbre > 0) // On vérifie que les paramètres donnés sont corrects
 		{
-			crayonArbre.reinitialiseLeCanvas(parametresDeDemarrageArbre);
-			crayonArbre.traceEnLigne(longueurArbre);
+			crayonArbre.reinitialiseLeCanvas(parametresDeDemarrageArbre); // On vide le canvas avant de commencer
+			crayonArbre.traceEnLigne(longueurArbre); // On trace le tronc de l'arbre
 			branches(longueurArbre*ratioArbre, ratioArbre, angleArbre, nombreBranchesArbre, nombreDIterationsArbre);
 		}
 }

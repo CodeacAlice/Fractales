@@ -1,9 +1,10 @@
+/* Ici se trouve le code pour tracer le flocon de Koch */
 
 // On définit nos variables principales
 
 const idCanvasFlocon = "canvasFlocon"; 
-const canvasFlocon = document.getElementById(idCanvasFlocon);
 
+const canvasFlocon = document.getElementById(idCanvasFlocon);
 const inputNombreDiterationsFlocon = document.getElementById('inputNombreDiterationsFlocon');
 
 // On calcule la position initiale de façon à ce que le flocon soit centré
@@ -14,6 +15,7 @@ const origineYFlocon = Math.round(canvasFlocon.height/2 - longueurSegmentFlocon 
 const origineAngleFlocon = 0;
 const couleurFlocon = "blue";
 
+// On créé notre objet Crayon
 const parametresDeDemarrageFlocon = {
 	x: origineXFlocon, 
 	y: origineYFlocon, 

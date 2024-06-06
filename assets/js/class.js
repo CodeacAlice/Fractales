@@ -1,11 +1,11 @@
 
-// On créé une classe "Crayon" qui représente le crayon avec lequel on va dessiner nos fractales
-// Ses attributs sont :
-    // Les coordonnées (x,y) de sa position, 
-    // La direction (angle) dans laquelle il est tourné, 
-    // L'identifiant du canvas sur lequel on va dessiner
-    // La couleur du trait
-    // L'élément sur lequel on dessine (ctx)
+/*  On créé une classe "Crayon" qui représente le crayon avec lequel on va dessiner nos fractales
+    Ses attributs sont :
+        Les coordonnées (x,y) de sa position, 
+        La direction (angle) dans laquelle il est tourné, 
+        L'identifiant du canvas sur lequel on va dessiner (idCanvas)
+        L'élément sur lequel on dessine (ctx)
+*/
 
 class Crayon {
     x = 0;
@@ -13,7 +13,6 @@ class Crayon {
     angle = 0;
     idCanvas;
     ctx;
-
 
     /**
      * @param {string} idCanvas L'identifiant du canvas sur lequel on va dessiner
@@ -54,6 +53,11 @@ class Crayon {
         this.angle += this.degresVersRadians(angleDeRotation);
     }
 
+    /**
+     * Convertit un angle en radians
+     * @param {number} angleEnDegres Un angle, exprimé en degrés 
+     * @returns Le même angle converti en radians
+     */
     degresVersRadians(angleEnDegres) {
         return Math.PI * angleEnDegres / 180.0;
     }
