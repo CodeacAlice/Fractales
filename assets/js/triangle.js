@@ -94,15 +94,18 @@ function triangle(longueurCote, nombreDIterations) {
 */
 function tracerLeTriangle() {
 	// On récupère la longueur et le nombre d'itérations
-	var longueurCote = parseFloat(inputLongueurTriangle.value);
-	var nombreDIterations = parseInt(inputNombreDIterationsTriangle.value);
+	let longueurCote = parseFloat(inputLongueurTriangle.value);
+	let nombreDIterations = parseInt(inputNombreDIterationsTriangle.value);
 	
 	
 	if (longueurCote > 0 && nombreDIterations > 0) // On vérifie que les valeurs données sont correctes
-	{ 
-		crayonTriangle.reinitialiseLeCanvas(parametresDeDemarrageTriangle); // On vide le canvas
-		triangle(longueurCote, nombreDIterations); // On trace les triangles
-		crayonTriangle.ctx.fill(); // On remplit l'intérieur des triangles dessinés
+	{
+		if (nombreDIterations >= 10) alert("N'y pense même pas");
+		else {
+			crayonTriangle.reinitialiseLeCanvas(parametresDeDemarrageTriangle); // On vide le canvas
+			triangle(longueurCote, nombreDIterations); // On trace les triangles
+			crayonTriangle.ctx.fill(); // On remplit l'intérieur des triangles dessinés
+		}
 	}
 }
 

@@ -71,14 +71,17 @@ function tracerLeFlocon() {
 
 	if (nombreDIterations > 0) // Vérifier que la valeur entrée est cohérente avant de tracer le flocon
 		{
-            crayonFlocon.reinitialiseLeCanvas(parametresDeDemarrageFlocon); // Effacer le dessin précédent avant de tracer
+			if (nombreDIterations >= 10) alert("Non"); // Interdiction de faire plus de 10 itérations
+			else {
+				crayonFlocon.reinitialiseLeCanvas(parametresDeDemarrageFlocon); // Effacer le dessin précédent avant de tracer
 
-			// Chaque courbe dessinée ne fait qu'un tiers du flocon qu'on veut obtenir, on en trace donc trois en tournant entre chaque
-			courbeDeKoch(longueurSegmentFlocon, nombreDIterations);
-			crayonFlocon.tourne(120); 
-			courbeDeKoch(longueurSegmentFlocon, nombreDIterations);
-			crayonFlocon.tourne(120); 
-			courbeDeKoch(longueurSegmentFlocon, nombreDIterations);
+				// Chaque courbe dessinée ne fait qu'un tiers du flocon qu'on veut obtenir, on en trace donc trois en tournant entre chaque
+				courbeDeKoch(longueurSegmentFlocon, nombreDIterations);
+				crayonFlocon.tourne(120); 
+				courbeDeKoch(longueurSegmentFlocon, nombreDIterations);
+				crayonFlocon.tourne(120); 
+				courbeDeKoch(longueurSegmentFlocon, nombreDIterations);
+			}
 		}
 }
 

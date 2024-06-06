@@ -89,10 +89,13 @@ function tracerLArbre () {
 	let nombreDIterationsArbre = parseInt(inputNombreDIterationsArbre.value);
 
 	if (longueurArbre > 0 && ratioArbre > 0 && angleArbre > 0 && nombreBranchesArbre > 0 && nombreDIterationsArbre > 0) // On vérifie que les paramètres donnés sont corrects
-		{
+	{	
+		if (nombreDIterationsArbre >= 10) alert("Nope");
+		else {
 			crayonArbre.reinitialiseLeCanvas(parametresDeDemarrageArbre); // On vide le canvas avant de commencer
 			crayonArbre.traceEnLigne(longueurArbre); // On trace le tronc de l'arbre
 			branches(longueurArbre*ratioArbre, ratioArbre, angleArbre, nombreBranchesArbre, nombreDIterationsArbre);
 		}
+	}
 }
 // Sachez qu'avec un rapport de 0.5, un angle de 120 et 3 branches filles, vous obtiendrez un triangle de Sierpinski. Essayez donc !

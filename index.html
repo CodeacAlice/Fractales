@@ -13,7 +13,7 @@
         <h2>Flocon de Koch</h2>
         <p>
             <label for="inputNombreDiterationsFlocon">Nombre d'itérations</label> :
-            <input id="inputNombreDiterationsFlocon" type="number" name="nombreDiterationsFlocon" value="3">
+            <input id="inputNombreDiterationsFlocon" type="number" name="nombreDiterationsFlocon" value="3" min="1" max="9">
         </p>
         <p>
             <button type="button" onclick="tracerLeFlocon()">Tracer le flocon</button>
@@ -26,23 +26,23 @@
 
         <p>
             <label for="inputLongueurArbre">Longueur du tronc</label> :
-            <input id="inputLongueurArbre" type="number" name="longueurArbre" value="100">
+            <input id="inputLongueurArbre" type="number" name="longueurArbre" value="100" min="1">
         </p>
         <p>
             <label for="inputRatioArbre">Rapport de longueur entre une branche mère et une branche fille</label> :
-            <input id="inputRatioArbre" type="number" name="ratioArbre" value="0.7">
+            <input id="inputRatioArbre" type="number" name="ratioArbre" value="0.7" min="0">
         </p>
         <p>
             <label for="inputAngleArbre">Angle entre deux branches</label> :
-            <input id="inputAngleArbre" type="number" name="angleArbre" value="30">
+            <input id="inputAngleArbre" type="number" name="angleArbre" value="30" min="0">
         </p>
         <p>
             <label for="inputNombreBranchesArbre">Nombre de branches filles</label> :
-            <input id="inputNombreBranchesArbre" type="number" name="nombreBranchesArbre" value="3">
+            <input id="inputNombreBranchesArbre" type="number" name="nombreBranchesArbre" value="3" min="1">
         </p>
         <p>
             <label for="inputNombreDIterationsArbre">Nombre d'itérations</label> :
-            <input id="inputNombreDIterationsArbre" type="number" name="nombreDIterationsArbre" value="4">
+            <input id="inputNombreDIterationsArbre" type="number" name="nombreDIterationsArbre" value="4" min="1" max="9">
         </p>
         <p>
             <button type="button" onclick="tracerLArbre()">Faire pousser l'arbre</button>
@@ -53,11 +53,11 @@
         <h2>Triangle de Sierpinski</h2>
         <p>
             <label for="inputLongueurTriangle">Longueur du triangle</label> : 
-            <input id="inputLongueurTriangle" type="number" name="longueurTriangle" value="200">
+            <input id="inputLongueurTriangle" type="number" name="longueurTriangle" value="200" min="1">
         </p>
         <p>
             <label for="inputNombreDIterationsTriangle">Nombre d'itérations</label> : 
-            <input id="inputNombreDIterationsTriangle" type="number" name="nombreDIterationsTriangle" value="1">
+            <input id="inputNombreDIterationsTriangle" type="number" name="nombreDIterationsTriangle" value="2" min="1" max="9">
         </p>
         <p>
             <button type="button" onclick="tracerLeTriangle()">Dessiner le triangle</button>
