@@ -64,7 +64,7 @@ function courbeDeKoch (longueurSegment, nombreDIterations) {
 /**
  * Trace le flocon à l'aide de la fonction courbeDeKoch et des données entrées par l'utilisateur·rice
  */
-function tracerLeFloconDeKoch() {
+function tracerLeFlocon() {
 	let nombreDIterations = inputNombreDiterationsFlocon.value; // On récupère le nombre d'itérations
 
 	if (nombreDIterations > 0) // Vérifier que la valeur entrée est cohérente avant de tracer le flocon
